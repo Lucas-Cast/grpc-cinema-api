@@ -1,0 +1,49 @@
+syntax = 'proto3';
+
+import "genre.proto";
+import "actor.proto";
+package movie;
+
+service MovieService {
+  rpc getAllMovies (Empty) returns (MoviesList);
+  rpc getMovieById (MovieId) returns (Movie);
+  rpc createMovie (CreateMovie) returns (Movie);
+  rpc updateMovie (UpdateMovie) returns (Movie);
+  rpc deleteMovie (MovieId) returns (Empty);
+}
+
+message Movie {
+  string id = 1;
+  string title = 2;
+  string director = 3;
+  int32 release_year = 4;
+  repeated genre.Genre genres = 5;
+  repeated actor.Actor actors = 6;
+}
+
+message MoviesList {
+  repeated Movie movies = 1;
+}
+
+message MovieId {
+  string id = 1; 
+}
+
+message CreateMovie {
+  string title = 1;
+  string director = 2;
+  int32 release_year = 3;
+  repeated string genre_ids = 4;
+  repeated string actor_ids = 5;
+}
+
+message UpdateMovie {
+  string id = 1;
+  optional string title = 2;
+  optional string director = 3;
+  optional int32 release_year = 4;
+  optional repeated string genre_ids = 5;
+  optional repeated string actor_ids = 6;
+}
+
+message Empty {}

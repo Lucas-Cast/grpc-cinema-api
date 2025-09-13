@@ -1,0 +1,38 @@
+syntax = 'proto3';
+import "movie.proto";
+package genre;
+
+service GenreService {
+  rpc getAllGenres (Empty) returns (GenresList);
+  rpc getGenreById (GenreId) returns (Genre);
+  rpc createGenre (CreateGenre) returns (Genre);
+  rpc updateGenre (UpdateGenre) returns (Genre);
+  rpc deleteGenre (GenreId) returns (Empty);
+}
+
+message Genre {
+  string id = 1;
+  string name = 2;
+  repeated movie.Movie movies = 3;
+}
+
+message GenresList {
+  repeated Genre genres = 1;
+}
+
+message GenreId {
+  string id = 1;
+}
+
+message CreateGenre {
+  string name = 1;
+  repeated int32 movie_ids = 2;
+}
+
+message UpdateGenre {
+  string id = 1;
+  optional string name = 2;
+  optional repeated int32 movie_ids = 3;
+}
+
+message Empty {}

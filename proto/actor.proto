@@ -1,0 +1,38 @@
+syntax = 'proto3';
+
+package actor;
+
+service ActorService {
+  rpc getAllActors (Empty) returns (ActorsList);
+  rpc getActorById (ActorId) returns (Actor);
+  rpc createActor (CreateActor) returns (Actor);
+  rpc updateActor (UpdateActor) returns (Actor);
+  rpc deleteActor (ActorId) returns (Empty);
+}
+
+message Actor{
+  int32 id = 1;
+  string name = 2;
+  string birthYear = 3;
+}
+
+message ActorsList {
+  repeated Actor actors = 1;
+}
+
+message ActorId {
+  int32 id = 1;
+}
+
+message CreateActor {
+  string name = 1;
+  string birthYear = 2;
+}
+
+message UpdateActor {
+  int32 id = 1;
+  optional string name = 2;
+  optional string birthYear = 3;
+}
+
+message Empty {}
