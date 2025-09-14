@@ -1,23 +1,17 @@
-syntax = 'proto3';
-
+syntax = "proto3";
+import "base.proto";
 package actor;
 
 service ActorService {
-  rpc getAllActors (Empty) returns (ActorsList);
-  rpc getActorById (ActorId) returns (Actor);
-  rpc createActor (CreateActor) returns (Actor);
-  rpc updateActor (UpdateActor) returns (Actor);
-  rpc deleteActor (ActorId) returns (Empty);
-}
-
-message Actor{
-  int32 id = 1;
-  string name = 2;
-  string birthYear = 3;
+  rpc getAllActors (base.Empty) returns (ActorsList);
+  rpc getActorById (ActorId) returns (base.Actor);
+  rpc createActor (CreateActor) returns (base.Actor);
+  rpc updateActor (UpdateActor) returns (base.Actor);
+  rpc deleteActor (ActorId) returns (base.Empty);
 }
 
 message ActorsList {
-  repeated Actor actors = 1;
+  repeated base.Actor actors = 1;
 }
 
 message ActorId {
@@ -26,13 +20,11 @@ message ActorId {
 
 message CreateActor {
   string name = 1;
-  string birthYear = 2;
+  int32 birthYear = 2;
 }
 
 message UpdateActor {
   int32 id = 1;
   optional string name = 2;
-  optional string birthYear = 3;
+  optional int32 birthYear = 3;
 }
-
-message Empty {}

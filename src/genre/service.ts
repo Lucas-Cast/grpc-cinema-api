@@ -1,4 +1,4 @@
-import { CreateGenreInput, UpdateGenreInput } from '../generated/graphql'
+import { genre } from '../generated/genre'
 import { GenreCreateInput, GenreUpdateInput } from '../generated/prisma-client/models'
 import { GenreRepository } from './repository'
 
@@ -9,34 +9,36 @@ export class GenreService {
   async getAllGenres() {
     return await this.genresRepository.getAllGenres()
   }
-  async getGenreById(id: string) {
-    return await this.genresRepository.getGenreById(parseInt(id))
+  async getGenreById(id: number) {
+    return await this.genresRepository.getGenreById(id)
   }
-  async createGenre(input: CreateGenreInput) {
+  async createGenre(input: genre.CreateGenre) {
     const genreData: GenreCreateInput = {
       name: input.name,
-      ...(input.movies?.length && {
+      ...(input.movie_ids?.length && {
         movies: {
-          connect: input.movies.map(id => ({ id: parseInt(id) })),
+          connect: input.movie_ids.map(id => ({ id })),
         },
       }),
     }
 
     return await this.genresRepository.create(genreData)
   }
-  async updateGenre(id: string, input: UpdateGenreInput) {
+  async updateGenre(id: number, input: genre.UpdateGenre) {
     const genreData: GenreUpdateInput = {
-      name: input.name ?? undefined,
-      ...(input.movies?.length && {
+      name: input.name,
+      ...(input.movie_ids?.length && {
         movies: {
-          set: input.movies.map(id => ({ id: parseInt(id) })),
+          set: input.movie_ids.map(id => ({
+            id,
+          })),
         },
       }),
     }
 
-    return await this.genresRepository.update(parseInt(id), genreData)
+    return await this.genresRepository.update(id, genreData)
   }
-  async deleteGenre(id: string) {
-    return await this.genresRepository.delete(parseInt(id))
+  async deleteGenre(id: number) {
+    return await this.genresRepository.delete(id)
   }
 }

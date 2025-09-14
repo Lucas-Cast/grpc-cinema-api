@@ -1,12 +1,12 @@
 import { PrismaClient } from '../generated/prisma-client/client'
-import { MovieCreateInput, MovieUpdateInput } from '../generated/prisma-client/models'
+import { MovieCreateInput, MovieModel, MovieUpdateInput } from '../generated/prisma-client/models'
 
 export default class MovieRepository {
   constructor(private prisma: PrismaClient) {
     this.prisma = prisma
   }
 
-  async getAllMovies() {
+  async getAllMovies(): Promise<MovieModel[]> {
     return await this.prisma.movie.findMany({
       include: {
         actors: true,
@@ -15,7 +15,7 @@ export default class MovieRepository {
     })
   }
 
-  async getMovieById(id: number) {
+  async getMovieById(id: number): Promise<MovieModel | null> {
     return await this.prisma.movie.findUnique({
       where: { id },
       include: {

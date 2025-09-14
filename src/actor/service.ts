@@ -1,4 +1,4 @@
-import { CreateActorInput, UpdateActorInput } from '../generated/graphql'
+import { actor } from '../generated/actor'
 import { ActorUpdateInput } from '../generated/prisma-client/models'
 import ActorRepository from './repository'
 
@@ -10,24 +10,24 @@ export default class ActorService {
     return this.actorRepository.getAllActors()
   }
 
-  async getActorById(id: string) {
-    return this.actorRepository.getActorById(parseInt(id))
+  async getActorById(id: number) {
+    return this.actorRepository.getActorById(id)
   }
 
-  async createActor(data: CreateActorInput) {
+  async createActor(data: actor.CreateActor) {
     return this.actorRepository.createActor(data)
   }
 
-  async updateActor(id: string, data: UpdateActorInput) {
+  async updateActor(id: number, data: actor.UpdateActor) {
     const actorData: ActorUpdateInput = {
       name: data.name ?? undefined,
       birthYear: data.birthYear ?? undefined,
     }
 
-    return this.actorRepository.updateActor(parseInt(id), actorData)
+    return this.actorRepository.updateActor(id, actorData)
   }
 
-  async deleteActor(id: string) {
-    return this.actorRepository.deleteActor(parseInt(id))
+  async deleteActor(id: number) {
+    return this.actorRepository.deleteActor(id)
   }
 }
