@@ -21,16 +21,16 @@ message MovieId {
 message CreateMovie {
   string title = 1;
   string director = 2;
-  int32 release_year = 3;
-  repeated int32 genre_ids = 4;
-  repeated int32 actor_ids = 5;
+  int32 releaseYear = 3;
+  repeated int32 genreIds = 4;
+  repeated int32 actorIds = 5;
 }
 
 message UpdateMovie {
   int32 id = 1;
   optional string title = 2;
   optional string director = 3;
-  optional int32 release_year = 4;
-  repeated int32 genre_ids = 5;
-  repeated int32 actor_ids = 6;
+  optional int32 releaseYear = 4;
+  repeated int32 genreIds = 5;
+  repeated int32 actorIds = 6;
 }

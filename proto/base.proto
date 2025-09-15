@@ -12,7 +12,7 @@ message Movie {
   int32 id = 1;
   string title = 2;
   string director = 3;
-  int32 release_year = 4;
+  int32 releaseYear = 4;
   repeated Genre genres = 5;
   repeated Actor actors = 6;
 }

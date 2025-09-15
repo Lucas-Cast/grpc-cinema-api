@@ -15,9 +15,9 @@ export class GenreService {
   async createGenre(input: genre.CreateGenre) {
     const genreData: GenreCreateInput = {
       name: input.name,
-      ...(input.movie_ids?.length && {
+      ...(input.movieIds?.length && {
         movies: {
-          connect: input.movie_ids.map(id => ({ id })),
+          connect: input.movieIds.map(id => ({ id })),
         },
       }),
     }
@@ -27,9 +27,9 @@ export class GenreService {
   async updateGenre(id: number, input: genre.UpdateGenre) {
     const genreData: GenreUpdateInput = {
       name: input.name,
-      ...(input.movie_ids?.length && {
+      ...(input.movieIds?.length && {
         movies: {
-          set: input.movie_ids.map(id => ({
+          set: input.movieIds.map(id => ({
             id,
           })),
         },

@@ -145,7 +145,7 @@ export namespace genre {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             name?: string;
-            movie_ids?: number[];
+            movieIds?: number[];
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
@@ -153,8 +153,8 @@ export namespace genre {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
                 }
-                if ("movie_ids" in data && data.movie_ids != undefined) {
-                    this.movie_ids = data.movie_ids;
+                if ("movieIds" in data && data.movieIds != undefined) {
+                    this.movieIds = data.movieIds;
                 }
             }
         }
@@ -164,35 +164,35 @@ export namespace genre {
         set name(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
-        get movie_ids() {
+        get movieIds() {
             return pb_1.Message.getFieldWithDefault(this, 2, []) as number[];
         }
-        set movie_ids(value: number[]) {
+        set movieIds(value: number[]) {
             pb_1.Message.setField(this, 2, value);
         }
         static fromObject(data: {
             name?: string;
-            movie_ids?: number[];
+            movieIds?: number[];
         }): CreateGenre {
             const message = new CreateGenre({});
             if (data.name != null) {
                 message.name = data.name;
             }
-            if (data.movie_ids != null) {
-                message.movie_ids = data.movie_ids;
+            if (data.movieIds != null) {
+                message.movieIds = data.movieIds;
             }
             return message;
         }
         toObject() {
             const data: {
                 name?: string;
-                movie_ids?: number[];
+                movieIds?: number[];
             } = {};
             if (this.name != null) {
                 data.name = this.name;
             }
-            if (this.movie_ids != null) {
-                data.movie_ids = this.movie_ids;
+            if (this.movieIds != null) {
+                data.movieIds = this.movieIds;
             }
             return data;
         }
@@ -202,8 +202,8 @@ export namespace genre {
             const writer = w || new pb_1.BinaryWriter();
             if (this.name.length)
                 writer.writeString(1, this.name);
-            if (this.movie_ids.length)
-                writer.writePackedInt32(2, this.movie_ids);
+            if (this.movieIds.length)
+                writer.writePackedInt32(2, this.movieIds);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -217,7 +217,7 @@ export namespace genre {
                         message.name = reader.readString();
                         break;
                     case 2:
-                        message.movie_ids = reader.readPackedInt32();
+                        message.movieIds = reader.readPackedInt32();
                         break;
                     default: reader.skipField();
                 }
@@ -235,7 +235,7 @@ export namespace genre {
         #one_of_decls: number[][] = [[2]];
         constructor(data?: any[] | ({
             id?: number;
-            movie_ids?: number[];
+            movieIds?: number[];
         } & (({
             name?: string;
         })))) {
@@ -248,8 +248,8 @@ export namespace genre {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
                 }
-                if ("movie_ids" in data && data.movie_ids != undefined) {
-                    this.movie_ids = data.movie_ids;
+                if ("movieIds" in data && data.movieIds != undefined) {
+                    this.movieIds = data.movieIds;
                 }
             }
         }
@@ -268,10 +268,10 @@ export namespace genre {
         get has_name() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        get movie_ids() {
+        get movieIds() {
             return pb_1.Message.getFieldWithDefault(this, 3, []) as number[];
         }
-        set movie_ids(value: number[]) {
+        set movieIds(value: number[]) {
             pb_1.Message.setField(this, 3, value);
         }
         get _name() {
@@ -286,7 +286,7 @@ export namespace genre {
         static fromObject(data: {
             id?: number;
             name?: string;
-            movie_ids?: number[];
+            movieIds?: number[];
         }): UpdateGenre {
             const message = new UpdateGenre({});
             if (data.id != null) {
@@ -295,8 +295,8 @@ export namespace genre {
             if (data.name != null) {
                 message.name = data.name;
             }
-            if (data.movie_ids != null) {
-                message.movie_ids = data.movie_ids;
+            if (data.movieIds != null) {
+                message.movieIds = data.movieIds;
             }
             return message;
         }
@@ -304,7 +304,7 @@ export namespace genre {
             const data: {
                 id?: number;
                 name?: string;
-                movie_ids?: number[];
+                movieIds?: number[];
             } = {};
             if (this.id != null) {
                 data.id = this.id;
@@ -312,8 +312,8 @@ export namespace genre {
             if (this.name != null) {
                 data.name = this.name;
             }
-            if (this.movie_ids != null) {
-                data.movie_ids = this.movie_ids;
+            if (this.movieIds != null) {
+                data.movieIds = this.movieIds;
             }
             return data;
         }
@@ -325,8 +325,8 @@ export namespace genre {
                 writer.writeInt32(1, this.id);
             if (this.has_name)
                 writer.writeString(2, this.name);
-            if (this.movie_ids.length)
-                writer.writePackedInt32(3, this.movie_ids);
+            if (this.movieIds.length)
+                writer.writePackedInt32(3, this.movieIds);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -343,7 +343,7 @@ export namespace genre {
                         message.name = reader.readString();
                         break;
                     case 3:
-                        message.movie_ids = reader.readPackedInt32();
+                        message.movieIds = reader.readPackedInt32();
                         break;
                     default: reader.skipField();
                 }

@@ -5,14 +5,17 @@ import { genre } from '../generated/genre'
 import { GenreModel } from '../generated/prisma-client/models'
 
 export const genreImplementation = (genreService: GenreService) => ({
-  async getAllGenres(call: ServerUnaryCall<any, any>, callback: UnaryCallback<GenreModel[]>) {
+  async getAllGenres(
+    call: ServerUnaryCall<any, any>,
+    callback: UnaryCallback<{ genres: GenreModel[] }>
+  ) {
     await genreService
       .getAllGenres()
       .then(genres => {
-        callback(null, genres)
+        callback(null, { genres })
       })
       .catch(err => {
-        callback(err, [])
+        callback(err, { genres: [] })
       })
   },
   async getGenreById(

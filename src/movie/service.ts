@@ -13,31 +13,31 @@ export class MovieService {
     return this.movieRepository.getMovieById(parseInt(id))
   }
   async createMovie(data: movie.CreateMovie) {
-    const { genre_ids, actor_ids, title, director, release_year: releaseYear } = data
+    const { genreIds, actorIds, title, director, releaseYear } = data
     const movieData: MovieCreateInput = {
       title,
       director,
-      releaseYear,
-      ...(actor_ids?.length && {
-        actors: { connect: actor_ids.map(id => ({ id })) },
+      releaseYear: releaseYear,
+      ...(actorIds?.length && {
+        actors: { connect: actorIds.map(id => ({ id })) },
       }),
-      ...(genre_ids?.length && {
-        genres: { connect: genre_ids.map(id => ({ id })) },
+      ...(genreIds?.length && {
+        genres: { connect: genreIds.map(id => ({ id })) },
       }),
     }
     return this.movieRepository.createMovie(movieData)
   }
   async updateMovie(id: number, data: movie.UpdateMovie) {
-    const { actor_ids, genre_ids, director, title, release_year: releaseYear } = data
+    const { actorIds, genreIds, director, title, releaseYear } = data
     const movieData: MovieUpdateInput = {
       title,
       director,
       releaseYear,
-      ...(actor_ids?.length && {
-        actors: { connect: actor_ids.map(id => ({ id })) },
+      ...(actorIds?.length && {
+        actors: { connect: actorIds.map(id => ({ id })) },
       }),
-      ...(genre_ids?.length && {
-        genres: { set: genre_ids.map(id => ({ id })) },
+      ...(genreIds?.length && {
+        genres: { set: genreIds.map(id => ({ id })) },
       }),
     }
     return this.movieRepository.updateMovie(id, movieData)

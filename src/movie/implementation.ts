@@ -7,12 +7,12 @@ import { MovieModel } from '../generated/prisma-client/models'
 export const movieImplementation = (movieService: MovieService) => ({
   async getAllMovies(
     call: ServerUnaryCall<any, any>,
-    callback: UnaryCallback<MovieModel[]>
+    callback: UnaryCallback<{ movies: MovieModel[] }>
   ): Promise<void> {
     await movieService
       .getAllMovies()
-      .then(movies => callback(null, movies))
-      .catch(err => callback(err, []))
+      .then(movies => callback(null, { movies }))
+      .catch(err => callback(err, { movies: [] }))
   },
   async getMovieById(
     call: ServerUnaryCall<movie.MovieId, MovieModel | null>,

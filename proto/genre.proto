@@ -20,11 +20,11 @@ message GenreId {
 
 message CreateGenre {
   string name = 1;
-  repeated int32 movie_ids = 2;
+  repeated int32 movieIds = 2;
 }
 
 message UpdateGenre {
   int32 id = 1;
   optional string name = 2;
-  repeated int32 movie_ids = 3;
+  repeated int32 movieIds = 3;
 }

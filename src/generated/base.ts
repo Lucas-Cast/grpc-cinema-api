@@ -124,7 +124,7 @@ export namespace base {
             id?: number;
             title?: string;
             director?: string;
-            release_year?: number;
+            releaseYear?: number;
             genres?: Genre[];
             actors?: Actor[];
         }) {
@@ -140,8 +140,8 @@ export namespace base {
                 if ("director" in data && data.director != undefined) {
                     this.director = data.director;
                 }
-                if ("release_year" in data && data.release_year != undefined) {
-                    this.release_year = data.release_year;
+                if ("releaseYear" in data && data.releaseYear != undefined) {
+                    this.releaseYear = data.releaseYear;
                 }
                 if ("genres" in data && data.genres != undefined) {
                     this.genres = data.genres;
@@ -169,10 +169,10 @@ export namespace base {
         set director(value: string) {
             pb_1.Message.setField(this, 3, value);
         }
-        get release_year() {
+        get releaseYear() {
             return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
         }
-        set release_year(value: number) {
+        set releaseYear(value: number) {
             pb_1.Message.setField(this, 4, value);
         }
         get genres() {
@@ -191,7 +191,7 @@ export namespace base {
             id?: number;
             title?: string;
             director?: string;
-            release_year?: number;
+            releaseYear?: number;
             genres?: ReturnType<typeof Genre.prototype.toObject>[];
             actors?: ReturnType<typeof Actor.prototype.toObject>[];
         }): Movie {
@@ -205,8 +205,8 @@ export namespace base {
             if (data.director != null) {
                 message.director = data.director;
             }
-            if (data.release_year != null) {
-                message.release_year = data.release_year;
+            if (data.releaseYear != null) {
+                message.releaseYear = data.releaseYear;
             }
             if (data.genres != null) {
                 message.genres = data.genres.map(item => Genre.fromObject(item));
@@ -221,7 +221,7 @@ export namespace base {
                 id?: number;
                 title?: string;
                 director?: string;
-                release_year?: number;
+                releaseYear?: number;
                 genres?: ReturnType<typeof Genre.prototype.toObject>[];
                 actors?: ReturnType<typeof Actor.prototype.toObject>[];
             } = {};
@@ -234,8 +234,8 @@ export namespace base {
             if (this.director != null) {
                 data.director = this.director;
             }
-            if (this.release_year != null) {
-                data.release_year = this.release_year;
+            if (this.releaseYear != null) {
+                data.releaseYear = this.releaseYear;
             }
             if (this.genres != null) {
                 data.genres = this.genres.map((item: Genre) => item.toObject());
@@ -255,8 +255,8 @@ export namespace base {
                 writer.writeString(2, this.title);
             if (this.director.length)
                 writer.writeString(3, this.director);
-            if (this.release_year != 0)
-                writer.writeInt32(4, this.release_year);
+            if (this.releaseYear != 0)
+                writer.writeInt32(4, this.releaseYear);
             if (this.genres.length)
                 writer.writeRepeatedMessage(5, this.genres, (item: Genre) => item.serialize(writer));
             if (this.actors.length)
@@ -280,7 +280,7 @@ export namespace base {
                         message.director = reader.readString();
                         break;
                     case 4:
-                        message.release_year = reader.readInt32();
+                        message.releaseYear = reader.readInt32();
                         break;
                     case 5:
                         reader.readMessage(message.genres, () => pb_1.Message.addToRepeatedWrapperField(message, 5, Genre.deserialize(reader), Genre));

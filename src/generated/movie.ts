@@ -146,9 +146,9 @@ export namespace movie {
         constructor(data?: any[] | {
             title?: string;
             director?: string;
-            release_year?: number;
-            genre_ids?: number[];
-            actor_ids?: number[];
+            releaseYear?: number;
+            genreIds?: number[];
+            actorIds?: number[];
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4, 5], this.#one_of_decls);
@@ -159,14 +159,14 @@ export namespace movie {
                 if ("director" in data && data.director != undefined) {
                     this.director = data.director;
                 }
-                if ("release_year" in data && data.release_year != undefined) {
-                    this.release_year = data.release_year;
+                if ("releaseYear" in data && data.releaseYear != undefined) {
+                    this.releaseYear = data.releaseYear;
                 }
-                if ("genre_ids" in data && data.genre_ids != undefined) {
-                    this.genre_ids = data.genre_ids;
+                if ("genreIds" in data && data.genreIds != undefined) {
+                    this.genreIds = data.genreIds;
                 }
-                if ("actor_ids" in data && data.actor_ids != undefined) {
-                    this.actor_ids = data.actor_ids;
+                if ("actorIds" in data && data.actorIds != undefined) {
+                    this.actorIds = data.actorIds;
                 }
             }
         }
@@ -182,30 +182,30 @@ export namespace movie {
         set director(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
-        get release_year() {
+        get releaseYear() {
             return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
         }
-        set release_year(value: number) {
+        set releaseYear(value: number) {
             pb_1.Message.setField(this, 3, value);
         }
-        get genre_ids() {
+        get genreIds() {
             return pb_1.Message.getFieldWithDefault(this, 4, []) as number[];
         }
-        set genre_ids(value: number[]) {
+        set genreIds(value: number[]) {
             pb_1.Message.setField(this, 4, value);
         }
-        get actor_ids() {
+        get actorIds() {
             return pb_1.Message.getFieldWithDefault(this, 5, []) as number[];
         }
-        set actor_ids(value: number[]) {
+        set actorIds(value: number[]) {
             pb_1.Message.setField(this, 5, value);
         }
         static fromObject(data: {
             title?: string;
             director?: string;
-            release_year?: number;
-            genre_ids?: number[];
-            actor_ids?: number[];
+            releaseYear?: number;
+            genreIds?: number[];
+            actorIds?: number[];
         }): CreateMovie {
             const message = new CreateMovie({});
             if (data.title != null) {
@@ -214,14 +214,14 @@ export namespace movie {
             if (data.director != null) {
                 message.director = data.director;
             }
-            if (data.release_year != null) {
-                message.release_year = data.release_year;
+            if (data.releaseYear != null) {
+                message.releaseYear = data.releaseYear;
             }
-            if (data.genre_ids != null) {
-                message.genre_ids = data.genre_ids;
+            if (data.genreIds != null) {
+                message.genreIds = data.genreIds;
             }
-            if (data.actor_ids != null) {
-                message.actor_ids = data.actor_ids;
+            if (data.actorIds != null) {
+                message.actorIds = data.actorIds;
             }
             return message;
         }
@@ -229,9 +229,9 @@ export namespace movie {
             const data: {
                 title?: string;
                 director?: string;
-                release_year?: number;
-                genre_ids?: number[];
-                actor_ids?: number[];
+                releaseYear?: number;
+                genreIds?: number[];
+                actorIds?: number[];
             } = {};
             if (this.title != null) {
                 data.title = this.title;
@@ -239,14 +239,14 @@ export namespace movie {
             if (this.director != null) {
                 data.director = this.director;
             }
-            if (this.release_year != null) {
-                data.release_year = this.release_year;
+            if (this.releaseYear != null) {
+                data.releaseYear = this.releaseYear;
             }
-            if (this.genre_ids != null) {
-                data.genre_ids = this.genre_ids;
+            if (this.genreIds != null) {
+                data.genreIds = this.genreIds;
             }
-            if (this.actor_ids != null) {
-                data.actor_ids = this.actor_ids;
+            if (this.actorIds != null) {
+                data.actorIds = this.actorIds;
             }
             return data;
         }
@@ -258,12 +258,12 @@ export namespace movie {
                 writer.writeString(1, this.title);
             if (this.director.length)
                 writer.writeString(2, this.director);
-            if (this.release_year != 0)
-                writer.writeInt32(3, this.release_year);
-            if (this.genre_ids.length)
-                writer.writePackedInt32(4, this.genre_ids);
-            if (this.actor_ids.length)
-                writer.writePackedInt32(5, this.actor_ids);
+            if (this.releaseYear != 0)
+                writer.writeInt32(3, this.releaseYear);
+            if (this.genreIds.length)
+                writer.writePackedInt32(4, this.genreIds);
+            if (this.actorIds.length)
+                writer.writePackedInt32(5, this.actorIds);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -280,13 +280,13 @@ export namespace movie {
                         message.director = reader.readString();
                         break;
                     case 3:
-                        message.release_year = reader.readInt32();
+                        message.releaseYear = reader.readInt32();
                         break;
                     case 4:
-                        message.genre_ids = reader.readPackedInt32();
+                        message.genreIds = reader.readPackedInt32();
                         break;
                     case 5:
-                        message.actor_ids = reader.readPackedInt32();
+                        message.actorIds = reader.readPackedInt32();
                         break;
                     default: reader.skipField();
                 }
@@ -304,14 +304,14 @@ export namespace movie {
         #one_of_decls: number[][] = [[2], [3], [4]];
         constructor(data?: any[] | ({
             id?: number;
-            genre_ids?: number[];
-            actor_ids?: number[];
+            genreIds?: number[];
+            actorIds?: number[];
         } & (({
             title?: string;
         }) | ({
             director?: string;
         }) | ({
-            release_year?: number;
+            releaseYear?: number;
         })))) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [5, 6], this.#one_of_decls);
@@ -325,14 +325,14 @@ export namespace movie {
                 if ("director" in data && data.director != undefined) {
                     this.director = data.director;
                 }
-                if ("release_year" in data && data.release_year != undefined) {
-                    this.release_year = data.release_year;
+                if ("releaseYear" in data && data.releaseYear != undefined) {
+                    this.releaseYear = data.releaseYear;
                 }
-                if ("genre_ids" in data && data.genre_ids != undefined) {
-                    this.genre_ids = data.genre_ids;
+                if ("genreIds" in data && data.genreIds != undefined) {
+                    this.genreIds = data.genreIds;
                 }
-                if ("actor_ids" in data && data.actor_ids != undefined) {
-                    this.actor_ids = data.actor_ids;
+                if ("actorIds" in data && data.actorIds != undefined) {
+                    this.actorIds = data.actorIds;
                 }
             }
         }
@@ -360,25 +360,25 @@ export namespace movie {
         get has_director() {
             return pb_1.Message.getField(this, 3) != null;
         }
-        get release_year() {
+        get releaseYear() {
             return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
         }
-        set release_year(value: number) {
+        set releaseYear(value: number) {
             pb_1.Message.setOneofField(this, 4, this.#one_of_decls[2], value);
         }
-        get has_release_year() {
+        get has_releaseYear() {
             return pb_1.Message.getField(this, 4) != null;
         }
-        get genre_ids() {
+        get genreIds() {
             return pb_1.Message.getFieldWithDefault(this, 5, []) as number[];
         }
-        set genre_ids(value: number[]) {
+        set genreIds(value: number[]) {
             pb_1.Message.setField(this, 5, value);
         }
-        get actor_ids() {
+        get actorIds() {
             return pb_1.Message.getFieldWithDefault(this, 6, []) as number[];
         }
-        set actor_ids(value: number[]) {
+        set actorIds(value: number[]) {
             pb_1.Message.setField(this, 6, value);
         }
         get _title() {
@@ -399,12 +399,12 @@ export namespace movie {
             };
             return cases[pb_1.Message.computeOneofCase(this, [3])];
         }
-        get _release_year() {
+        get _releaseYear() {
             const cases: {
-                [index: number]: "none" | "release_year";
+                [index: number]: "none" | "releaseYear";
             } = {
                 0: "none",
-                4: "release_year"
+                4: "releaseYear"
             };
             return cases[pb_1.Message.computeOneofCase(this, [4])];
         }
@@ -412,9 +412,9 @@ export namespace movie {
             id?: number;
             title?: string;
             director?: string;
-            release_year?: number;
-            genre_ids?: number[];
-            actor_ids?: number[];
+            releaseYear?: number;
+            genreIds?: number[];
+            actorIds?: number[];
         }): UpdateMovie {
             const message = new UpdateMovie({});
             if (data.id != null) {
@@ -426,14 +426,14 @@ export namespace movie {
             if (data.director != null) {
                 message.director = data.director;
             }
-            if (data.release_year != null) {
-                message.release_year = data.release_year;
+            if (data.releaseYear != null) {
+                message.releaseYear = data.releaseYear;
             }
-            if (data.genre_ids != null) {
-                message.genre_ids = data.genre_ids;
+            if (data.genreIds != null) {
+                message.genreIds = data.genreIds;
             }
-            if (data.actor_ids != null) {
-                message.actor_ids = data.actor_ids;
+            if (data.actorIds != null) {
+                message.actorIds = data.actorIds;
             }
             return message;
         }
@@ -442,9 +442,9 @@ export namespace movie {
                 id?: number;
                 title?: string;
                 director?: string;
-                release_year?: number;
-                genre_ids?: number[];
-                actor_ids?: number[];
+                releaseYear?: number;
+                genreIds?: number[];
+                actorIds?: number[];
             } = {};
             if (this.id != null) {
                 data.id = this.id;
@@ -455,14 +455,14 @@ export namespace movie {
             if (this.director != null) {
                 data.director = this.director;
             }
-            if (this.release_year != null) {
-                data.release_year = this.release_year;
+            if (this.releaseYear != null) {
+                data.releaseYear = this.releaseYear;
             }
-            if (this.genre_ids != null) {
-                data.genre_ids = this.genre_ids;
+            if (this.genreIds != null) {
+                data.genreIds = this.genreIds;
             }
-            if (this.actor_ids != null) {
-                data.actor_ids = this.actor_ids;
+            if (this.actorIds != null) {
+                data.actorIds = this.actorIds;
             }
             return data;
         }
@@ -476,12 +476,12 @@ export namespace movie {
                 writer.writeString(2, this.title);
             if (this.has_director)
                 writer.writeString(3, this.director);
-            if (this.has_release_year)
-                writer.writeInt32(4, this.release_year);
-            if (this.genre_ids.length)
-                writer.writePackedInt32(5, this.genre_ids);
-            if (this.actor_ids.length)
-                writer.writePackedInt32(6, this.actor_ids);
+            if (this.has_releaseYear)
+                writer.writeInt32(4, this.releaseYear);
+            if (this.genreIds.length)
+                writer.writePackedInt32(5, this.genreIds);
+            if (this.actorIds.length)
+                writer.writePackedInt32(6, this.actorIds);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -501,13 +501,13 @@ export namespace movie {
                         message.director = reader.readString();
                         break;
                     case 4:
-                        message.release_year = reader.readInt32();
+                        message.releaseYear = reader.readInt32();
                         break;
                     case 5:
-                        message.genre_ids = reader.readPackedInt32();
+                        message.genreIds = reader.readPackedInt32();
                         break;
                     case 6:
-                        message.actor_ids = reader.readPackedInt32();
+                        message.actorIds = reader.readPackedInt32();
                         break;
                     default: reader.skipField();
                 }

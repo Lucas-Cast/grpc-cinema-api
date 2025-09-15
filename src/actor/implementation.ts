@@ -5,14 +5,14 @@ import { ActorModel } from '../generated/prisma-client/models'
 import { actor } from '../generated/actor'
 
 export const actorImplementation = (actorService: ActorService) => ({
-  async getAllActors(call: ServerUnaryCall<any, any>, callback: UnaryCallback<ActorModel[]>) {
+  async getAllActors(call: ServerUnaryCall<any, any>, callback: UnaryCallback<actor.ActorsList>) {
     await actorService
       .getAllActors()
       .then(actors => {
-        callback(null, actors)
+        callback(null, { actors } as unknown as actor.ActorsList)
       })
       .catch((err: any) => {
-        callback(err, [])
+        callback(err, {} as actor.ActorsList)
       })
   },
   async getActorById(

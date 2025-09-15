@@ -22,7 +22,7 @@ const config: runtime.GetPrismaClientConfig = {
       "value": "prisma-client-ts"
     },
     "output": {
-      "value": "C:\\Users\\lucas.castelano\\Documents\\Projetos\\graphql-api\\src\\generated\\prisma-client",
+      "value": "C:\\Users\\lucas.castelano\\Documents\\Projetos\\grpc-cinema-api\\src\\generated\\prisma-client",
       "fromEnvVar": null
     },
     "config": {
@@ -36,7 +36,7 @@ const config: runtime.GetPrismaClientConfig = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\lucas.castelano\\Documents\\Projetos\\graphql-api\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\lucas.castelano\\Documents\\Projetos\\grpc-cinema-api\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativePath": "../../../prisma",
@@ -46,7 +46,6 @@ const config: runtime.GetPrismaClientConfig = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
